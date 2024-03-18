@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TSP con Búsqueda Tabú</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Optimización de Ruta</h1>
+                <form method="POST" id="optimizar-form">
+                    <button type="submit" class="btn btn-dark mt-4" style="font-family: 'Roboto', sans-serif;">Optimizar Ruta</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2 id="rutaTitulo" style="display: none;">Ruta Óptima:</h2>
+                <table id="ruta" class="table table-bordered table-striped" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Ruta Óptima</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                {% for ciudad in ruta %}
+                                    {{ ciudad }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 id="distanciaTitulo" style="display: none;">Distancia Total:</h2>
+                <table id="distancia" class="table table-bordered table-striped" style="display: none;">
+                    <tbody>
+                        <tr>
+                            <td>{{ distancia }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Mostrar la ruta y la distancia cuando se hace clic en el botón
+        $(document).ready(function() {
+            $('#optimizar-form').submit(function(e) {
+                e.preventDefault(); // Evitar que se envíe el formulario (para mantener la página estática)
+                $('#rutaTitulo, #ruta, #distanciaTitulo, #distancia').show();
+                setTimeout(function() {
+                    location.reload();
+                }, 3000); // Recargar la página después de 3 segundos (ajusta el tiempo según tus necesidades)
+            });
+        });
+    </script>
+</body>
+</html>
